@@ -2,6 +2,21 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const app = express()
+const bodyParser = require('body-parser');
+const lobbyController = require("./controller/lobbyController.js")
+
+
+
+const data = require("./models/dataSick.json")
+// const lobby = require("./models/lobby.json")
+
+
+let pateint = []
+
+data.patient.forEach((item)=>{
+  pateint.push(item)
+})
+
 
 
 const port = process.env.PORT || 3000;
@@ -19,31 +34,29 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
   res.render('index', {
-    age: 20,
-    name: 'Huy wang'
   })
 })
 
 app.get('/doctor',(req,res)=>{
   res.render('doctor',{
-    age: 20,
-    name: 'Huy wang'
   })
 })
 
 app.get('/lobby',(req,res)=>{
   res.render('lobby',{
-    age: 20,
-    name: 'Huy wang'
+    pateint : pateint
   })
 })
 
 app.get('/reception',(req,res)=>{
   res.render('reception',{
-    age: 20,
-    name: 'Huy wang'
+
   })
 })
+
+app.use("/newPatient",lobbyController)
+
+
 
 app.listen(port, () => {
   console.log('Server is up on port ' + port);
