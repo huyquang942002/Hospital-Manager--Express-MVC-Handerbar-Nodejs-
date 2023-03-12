@@ -1,7 +1,1 @@
-{
-    "insertPatient":[
-        {
-            
-        }
-    ]
-}
+[{"name":"asd","age":"1231","sick":"Cảm xoàn","priority":20,"expert":"Tai mũi họng"},{"name":"asd","age":"12","sick":"Cảm xoàn","priority":20,"expert":"Tai mũi họng"},{"name":"admin","age":"1","sick":"Cảm xoàn","priority":20,"expert":"Tai mũi họng"},{"name":"asd","age":"133","sick":"Cảm xoàn","priority":20,"expert":"Tai mũi họng"}]

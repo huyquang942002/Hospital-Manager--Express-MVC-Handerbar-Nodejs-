@@ -1,14 +1,11 @@
 const path = require('path')
 const express = require('express')
-const hbs = require('hbs')
 const app = express()
-const bodyParser = require('body-parser');
 const lobbyController = require("./controller/lobbyController.js")
 
-
+const lobbyJson = require("./models/lobby.json")
 
 const data = require("./models/dataSick.json")
-// const lobby = require("./models/lobby.json")
 
 
 let pateint = []
@@ -20,11 +17,9 @@ data.patient.forEach((item)=>{
 
 
 const port = process.env.PORT || 3000;
-// Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 
-// Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 
@@ -44,7 +39,8 @@ app.get('/doctor',(req,res)=>{
 
 app.get('/lobby',(req,res)=>{
   res.render('lobby',{
-    pateint : pateint
+    pateint ,
+    lobbyJson
   })
 })
 

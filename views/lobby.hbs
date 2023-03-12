@@ -52,10 +52,21 @@
             <th scope="col">Họ và tên</th>
             <th scope="col">Tuổi</th>
             <th scope="col">Loại Bệnh</th>
+            <th scope="col">Ưu tiên</th>
+            <th scope="col">Chuyên khoa</th>
           </tr>
         </thead>
         <tbody id="registered-patients">
           <!-- Danh sách bệnh nhân sẽ được thêm vào đây bằng JavaScript -->
+          {{#each lobbyJson}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{this.age}}</td>
+              <td>{{this.sick}}</td>
+              <td>{{this.priority}}</td>
+              <td>{{this.expert}}</td>
+            </tr>
+          {{/each}}
         </tbody>
       </table>
 
