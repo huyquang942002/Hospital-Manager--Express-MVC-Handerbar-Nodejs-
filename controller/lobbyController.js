@@ -5,29 +5,33 @@ const fs = require("fs");
 
 const dataSick = require("../models/dataSick.json");
 
-let pateint = [];
+let patient = [];
 
 // Sử dụng body-parser để xử lý dữ liệu từ form
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
+
+let date = new Date().toLocaleString()
 
 router.post("/", (req, res) => {
 
   const name = req.body.name;
   const age = req.body.age;
   const sick = req.body.sick;
+  
 
   dataSick.patient.forEach((item) => {
-    pateint.push(item);
+    patient.push(item);
   });
 
-  const matchedPateint = pateint.find((x) => x.name === sick);
+
+  const matchedpatient = patient.find((x) => x.name === sick);
 
   let data = {};
 
-  if (matchedPateint) {
-    let { priority, expert } = matchedPateint;
-    data = { name, age, sick, priority, expert };
+  if (matchedpatient) {
+    let { priority, expert } = matchedpatient;
+    data = {name,age,sick,priority,expert,date};
   }
 
   const FastPriorityQueue = require('fastpriorityqueue');

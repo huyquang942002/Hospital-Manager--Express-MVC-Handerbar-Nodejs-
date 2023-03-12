@@ -25,39 +25,39 @@
       <!-- Tạo biểu mẫu đăng ký bệnh nhân -->
       <form id="register-form" action="/newPatient" method="POST">
         <div class="form-group">
-          <label for="name">Họ và tên</label>
+          <label for="name">Name</label>
           <input type="text" class="form-control" id="name" name = "name" required />
         </div>
         <div class="form-group">
-          <label for="age">Tuổi</label>
+          <label for="age">Age</label>
           <input type="number" class="form-control" id="age" name="age" required />
         </div>
         <div class="form-group">
-          <label for="sick">Loại Bệnh</label>
+          <label for="sick">Disease</label>
 
           <select id="sick" name="sick">
-            {{#each pateint}}
+            {{#each patient}}
               <option>{{this.name}}</option>
             {{/each}}
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Đăng ký</button>
+        <button type="submit" class="btn btn-primary" id="register-btn">Register</button>
       
       </form>
 
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Tuổi</th>
-            <th scope="col">Loại Bệnh</th>
-            <th scope="col">Ưu tiên</th>
-            <th scope="col">Chuyên khoa</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Disease</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Expert</th>
+            <th scope="col">Date</th>
           </tr>
         </thead>
         <tbody id="registered-patients">
-          <!-- Danh sách bệnh nhân sẽ được thêm vào đây bằng JavaScript -->
           {{#each lobbyJson}}
             <tr>
               <td>{{this.name}}</td>
@@ -65,14 +65,67 @@
               <td>{{this.sick}}</td>
               <td>{{this.priority}}</td>
               <td>{{this.expert}}</td>
+              <td>{{this.date}}</td>
             </tr>
           {{/each}}
         </tbody>
       </table>
 
+      <button type="submit" class="btn btn-primary" id="move-btn">Move</button>
+
     </div>
   
-
   </body>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    const patients = document.getElementById("registered-patients")
+
+    var form = document.getElementById("register-form")
+
+       const renderpatient = function(data){
+
+        patients.innerText = '' ;
+
+        data.map(function(item,i){
+
+          let tableRow = document.createElement('tr');
+
+          let name = document.createElement('td');
+          name.textContent = item.name;
+
+          let age = document.createElement('td');
+          age.textContent = item.age
+
+          let sick = document.createElement('td');
+          sick.textContent = item.sick;
+
+          let priority = document.createElement('td');
+          priority.textContent = item.priority;
+
+          let expert = document.createElement('td');
+          expert.textContent = item.expert;
+
+          let date = document.createElement('td');
+          date.textContent = item.date;
+
+          tableRow.appendChild(name)
+          tableRow.appendChild(age)
+          tableRow.appendChild(sick)
+          tableRow.appendChild(priority)
+          tableRow.appendChild(expert)
+          tableRow.appendChild(date)
+
+          patients.appendChild(tableRow)
+        })
+       }
+
+       socket.on('register-socket',function(data){
+        renderpatient(data)
+       })
+
+  </script>
 
 </html>

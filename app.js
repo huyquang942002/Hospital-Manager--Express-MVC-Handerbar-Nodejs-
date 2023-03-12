@@ -1,6 +1,13 @@
 const path = require('path')
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+
+
 const lobbyController = require("./controller/lobbyController.js")
 
 const lobbyJson = require("./models/lobby.json")
@@ -8,10 +15,10 @@ const lobbyJson = require("./models/lobby.json")
 const data = require("./models/dataSick.json")
 
 
-let pateint = []
+let patient = []
 
 data.patient.forEach((item)=>{
-  pateint.push(item)
+  patient.push(item)
 })
 
 
@@ -23,7 +30,6 @@ const viewsPath = path.join(__dirname, './views')
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 
-// Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
 
@@ -39,7 +45,7 @@ app.get('/doctor',(req,res)=>{
 
 app.get('/lobby',(req,res)=>{
   res.render('lobby',{
-    pateint ,
+    patient ,
     lobbyJson
   })
 })
@@ -52,8 +58,10 @@ app.get('/reception',(req,res)=>{
 
 app.use("/newPatient",lobbyController)
 
+io.on('connection',(socket)=>{
+    socket.emit('register-socket',lobbyJson)
+})
 
-
-app.listen(port, () => {
+server.listen(port, () => {
   console.log('Server is up on port ' + port);
 })
