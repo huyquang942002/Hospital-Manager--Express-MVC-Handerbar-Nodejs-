@@ -6,13 +6,15 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+// const router = require("./router/home.router.js")
 
 
 const lobbyController = require("./controller/lobbyController.js")
+const move = require("./controller/move.js")
 
 const lobbyJson = require("./models/lobby.json")
 
-const data = require("./models/dataSick.json")
+const data = require("./models/dataPatient.json")
 
 
 let patient = []
@@ -53,10 +55,11 @@ app.get('/lobby',(req,res)=>{
 app.get('/reception',(req,res)=>{
   res.render('reception',{
 
-  })
+  })  
 })
 
-app.use("/newPatient",lobbyController)
+app.use("/",lobbyController)
+app.use("/",move)
 
 io.on('connection',(socket)=>{
     socket.emit('register-socket',lobbyJson)
@@ -65,3 +68,5 @@ io.on('connection',(socket)=>{
 server.listen(port, () => {
   console.log('Server is up on port ' + port);
 })
+
+// router(app)
