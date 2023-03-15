@@ -5,6 +5,8 @@ const fs = require("fs");
 
 const dataPatient = require("../models/dataPatient.json");
 
+const {priorityQueueRegister} = require("../fileHander/priorityQueue.js")
+
 let patient = [];
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -22,33 +24,16 @@ const newPatient = (req, res) => {
 
   const matchedpatient = patient.find((x) => x.name === sick);
 
-  let data = {};
+  let newData = {};
 
   if (matchedpatient) {
     let { priority, expert } = matchedpatient;
-    data = { name, age, sick, priority, expert, date };
+    newData = { name, age, sick, priority, expert, date };
   }
-
-  const FastPriorityQueue = require("fastpriorityqueue");
-  const queue = new FastPriorityQueue((a, b) => a.priority > b.priority);
 
   const lobbyData = JSON.parse(fs.readFileSync("./models/lobby.json"));
 
-  //add new data
-  queue.add(data);
-
-  // add existing data 
-  for (let i = 0; i < lobbyData.length; i++) {
-    queue.add(lobbyData[i]);
-  }
-
-  const priorityData = [];
-
-  while (!queue.isEmpty()) {
-    priorityData.push(queue.poll());
-  }
-
-  fs.writeFileSync("./models/lobby.json", JSON.stringify(priorityData))
+  fs.writeFileSync("./models/lobby.json", JSON.stringify(priorityQueueRegister(lobbyData,newData)))
 
   res.send("<script>alert('Đăng ký thành công'); window.location.href='/lobby';</script>");
 

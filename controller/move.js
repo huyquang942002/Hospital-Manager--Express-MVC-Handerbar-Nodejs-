@@ -2,6 +2,8 @@ const express = require("express")
 
 const router = express.Router();
 
+const {priorityQueueMove} = require("../fileHander/priorityQueue.js")
+
 const fs = require("fs");
 
 router.post("/move",(req,res)=>{
@@ -16,14 +18,12 @@ router.post("/move",(req,res)=>{
 
     fs.writeFileSync("./models/reception.json",JSON.stringify(reception))
 
+    fs.writeFileSync("./models/reception.json",JSON.stringify(priorityQueueMove(reception)))
+
+
     res.send("<script>alert('Move Success'); window.location.href='/lobby';</script>");
 
 })
-
-
-
-
-
 
 
 module.exports = router

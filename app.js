@@ -8,11 +8,11 @@ const io = new Server(server);
 
 // const router = require("./router/home.router.js")
 
-
 const lobbyController = require("./controller/lobbyController.js")
 const move = require("./controller/move.js")
 
 const lobbyJson = require("./models/lobby.json")
+const receptionJson = require("./models/reception.json")
 
 const data = require("./models/dataPatient.json")
 
@@ -54,7 +54,7 @@ app.get('/lobby',(req,res)=>{
 
 app.get('/reception',(req,res)=>{
   res.render('reception',{
-
+    receptionJson
   })  
 })
 
