@@ -1,0 +1,40 @@
+<html>
+
+  <head>
+    <title>Hospital Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+
+    <div class="container mt-5">
+      <h1>Update</h1>
+      <div class="mt-3">
+        <a href="/lobby" class="btn btn-primary mr-2">Lobby</a>
+        <a href="/reception" class="btn btn-primary mr-2">Reception</a>
+        <a href="/doctor" class="btn btn-primary mr-2">Doctor Room</a>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+
+      <form id="register-form" method="POST" action="/insurance/{{index}}">
+        
+        <div class="form-group">
+          <label for="insurance">ADD INSURANCE NUMBER </label>
+          <input type="number" class="form-control"  id="insurance" name="insurance" placeholder="Enter patient's insurance number" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="register-btn">UPDATE</button>
+      
+      </form>
+
+
+    </div>
+  
+  </body>
+
+</html>

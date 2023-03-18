@@ -12,7 +12,9 @@ router.post("/move",(req,res)=>{
 
     const reception = JSON.parse(fs.readFileSync("./models/reception.json"));
 
-    reception.push(lobby.shift())
+    const firstTen = lobby.splice(0,10-reception.length)    
+
+    reception.push(...firstTen)
 
     fs.writeFileSync("./models/lobby.json",JSON.stringify(lobby))
 
@@ -20,8 +22,7 @@ router.post("/move",(req,res)=>{
 
     fs.writeFileSync("./models/reception.json",JSON.stringify(priorityQueueMove(reception)))
 
-
-    res.send("<script>alert('Move Success'); window.location.href='/lobby';</script>");
+    res.redirect("/lobby")
 
 })
 
