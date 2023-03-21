@@ -35,7 +35,7 @@
           <label for="sick">Disease</label>
 
           <select id="sick" name="sick">
-            {{#each patient}}
+            {{#each diseases}}
               <option>{{this.name}}</option>
             {{/each}}
           </select>
@@ -52,7 +52,7 @@
             <th scope="col">Age</th>
             <th scope="col">Disease</th>
             <th scope="col">Priority</th>
-            <th scope="col">Expert</th>
+            <th scope="col">specialist</th>
             <th scope="col">Date</th>
           </tr>
         </thead>
@@ -63,7 +63,7 @@
               <td>{{this.age}}</td>
               <td>{{this.sick}}</td>
               <td>{{this.priority}}</td>
-              <td>{{this.expert}}</td>
+              <td>{{this.specialist}}</td>
               <td>{{this.date}}</td>
             </tr>
           {{/each}}
@@ -106,8 +106,8 @@
           let priority = document.createElement('td');
           priority.textContent = item.priority;
 
-          let expert = document.createElement('td');
-          expert.textContent = item.expert;
+          let specialist = document.createElement('td');
+          specialist.textContent = item.specialist;
 
           let date = document.createElement('td');
           date.textContent = item.date;
@@ -116,7 +116,7 @@
           tableRow.appendChild(age)
           tableRow.appendChild(sick)
           tableRow.appendChild(priority)
-          tableRow.appendChild(expert)
+          tableRow.appendChild(specialist)
           tableRow.appendChild(date)
 
           patients.appendChild(tableRow)

@@ -1,109 +1,107 @@
-{
-    "patient":[
+[
         {
             "id": "D01",
             "name": "Cảm xoàn",
             "priority": 20,
-            "expert": "Tai mũi họng"
+            "specialist": "Tai mũi họng"
         },
     
         {
             "id": "D02",
             "name": "Viêm amidan",
             "priority": 19,
-            "expert": "Tai mũi họng"
+            "specialist": "Tai mũi họng"
         },
     
         {
             "id": "D03",
             "name": "Covid 19",
             "priority": 5,
-            "expert": "Tai mũi họng"
+            "specialist": "Tai mũi họng"
         },
         
         {
             "id": "D04",
             "name": "Bong gân",
             "priority": 10,
-            "expert": "Chấn thương"
+            "specialist": "Chấn thương"
         },
     
         {
             "id": "D05",
             "name": "Giãn dây chằng",
             "priority": 12,
-            "expert": "Chấn thương"
+            "specialist": "Chấn thương"
         },
         
         {
             "id": "D06",
             "name": "Gãy tay",
             "priority": 2,
-            "expert": "Chấn thương"
+            "specialist": "Chấn thương"
         },
     
         {
             "id": "D07",
             "name": "Gãy chân",
             "priority": 2,
-            "expert": "Chấn thương"
+            "specialist": "Chấn thương"
         },
         
         {
             "id": "D08",
             "name": "Chấn thương sọ não",
             "priority": 1,
-            "expert": "Chấn thương"
+            "specialist": "Chấn thương"
         },
     
         {
             "id": "D09",
             "name": "Hở van tim",
             "priority": 15,
-            "expert": "Tim mạch"
+            "specialist": "Tim mạch"
         },
         
         {
             "id": "D10",
             "name": "Đái tháo đường",
             "priority": 17,
-            "expert": "Tim mạch"
+            "specialist": "Tim mạch"
         },
     
         {
             "id": "D11",
             "name": "Đau tim nhẹ",
             "priority": 5,
-            "expert": "Tim mạch"
+            "specialist": "Tim mạch"
         },
         
         {
             "id": "D12",
             "name": "Nhồi máu cơ tim",
             "priority": 1,
-            "expert": "Tim mạch"
+            "specialist": "Tim mạch"
         },
     
         {
             "id": "D13",
             "name": "Đau mắt đỏ",
             "priority": 15,
-            "expert": "Mắt"
+            "specialist": "Mắt"
         },
         
         {
             "id": "D14",
             "name": "Đục thủy tinh thể",
             "priority": 6,
-            "expert": "Mắt"
+            "specialist": "Mắt"
         },
     
         {
             "id": "D15",
             "name": "Tăng nhãn áp",
             "priority": 3,
-            "expert": "Mắt"
+            "specialist": "Mắt"
         }
     
-    ]
-}
+]

@@ -13,21 +13,15 @@ const lobbyController = require("./controller/lobbyController.js")
 const receptionController = require("./controller/receptionController.js")
 const insuranceController = require("./controller/insuranceController.js")
 const move = require("./controller/move.js")
+const moveReception = require("./controller/moveReception.js")
 
 const lobbyJson = require("./models/lobby.json")
 const receptionJson = require("./models/reception.json")
-const doctorJson = require("./models/doctor.json")
+const doctorJson = require("./models/doctor/doctor.json")
 
-console.log(doctorJson);
-
-const data = require("./models/dataPatient.json")
+const diseases = require("./models/diseases/dataPatient.json")
 
 
-let patient = []
-
-data.patient.forEach((item)=>{
-  patient.push(item)
-})
 
 
 
@@ -53,7 +47,7 @@ app.get('/doctor',(req,res)=>{
 
 app.get('/lobby',(req,res)=>{
   res.render('lobby',{
-    patient ,
+    diseases ,
     lobbyJson
   })
 })
@@ -71,6 +65,7 @@ app.use("/",lobbyController)
 app.use("/",receptionController)
 app.use("/",insuranceController)
 app.use("/",move)
+app.use("/",moveReception)
 
 
 io.on('connection',(socket)=>{

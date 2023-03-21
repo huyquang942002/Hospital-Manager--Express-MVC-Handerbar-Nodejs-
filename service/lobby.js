@@ -1,10 +1,9 @@
 const fs = require("fs");
 
-const dataPatient = require("../models/dataPatient.json");
+const diseases = require("../models/diseases/dataPatient.json");
 
 const {priorityQueueRegister} = require("../fileHander/priorityQueue.js")
     
-let patient = [];
 
 const newPatient = (req, res) => {
     const name = req.body.name;
@@ -12,17 +11,14 @@ const newPatient = (req, res) => {
     const sick = req.body.sick;
     let date = new Date().toLocaleString();
   
-    dataPatient.patient.forEach((item) => {
-      patient.push(item);
-    });
   
-    const matchedpatient = patient.find((x) => x.name === sick);
+    const matchedpatient = diseases.find((x) => x.name === sick);
   
     let newData = {};
   
     if (matchedpatient) {
-      let { priority, expert } = matchedpatient;
-      newData = { name, age, sick, priority, expert, date };
+      let { priority, specialist } = matchedpatient;
+      newData = { name, age, sick, priority, specialist, date };
     }
   
     const lobbyData = JSON.parse(fs.readFileSync("./models/lobby.json"));
@@ -31,6 +27,6 @@ const newPatient = (req, res) => {
   
     res.redirect('/lobby')
   
-  };
+};
 
   module.exports = newPatient

@@ -33,20 +33,24 @@
           <div class="col-3 col-sm-3 mt-2">
             <ul class="list-group">
               <li class="list-group-item active">Bác sĩ {{this.name}}</li>
-              <li class="list-group-item">Khoa phu san?</li>
-              <li class="list-group-item">Current Patients: 1/3</li>
+              <li class="list-group-item">Khoa {{this.specialist}}</li>
+              <li class="list-group-item">Current Patients:
+                {{this.currentSlot}}/{{this.slot}}</li>
             </ul>
           </div>
 
         {{/each}}
       </div>
+
     </div>
 
-    <hr>
+    <hr />
     <h1 style="text-align: center;">List Patient</h1>
 
     <div class="container mt-5">
-
+          <form action="/reception/move" method="POST">
+      <button type="submit" class="btn btn-primary" id="move-btn">Move</button>
+  </form>
       <table class="table">
         <thead>
           <tr>
@@ -55,7 +59,7 @@
             <th scope="col">Age</th>
             <th scope="col">Disease</th>
             <th scope="col">Priority</th>
-            <th scope="col">Expert</th>
+            <th scope="col">specialist</th>
             <th scope="col">Date</th>
             <th scope="col">Insurance</th>
           </tr>
@@ -69,7 +73,7 @@
               <td>{{this.age}}</td>
               <td>{{this.sick}}</td>
               <td>{{this.priority}}</td>
-              <td>{{this.expert}}</td>
+              <td>{{this.specialist}}</td>
               <td>{{this.date}}</td>
               <td>{{this.insurance}}</td>
               <td>
@@ -89,22 +93,6 @@
       </table>
 
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
 
   </body>
 </html>
