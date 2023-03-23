@@ -5,15 +5,12 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const hbs = require('hbs')
 
-// const methodOverride = require("method-override")
 
 
 const lobbyController = require("./controller/lobbyController.js")
 const receptionController = require("./controller/receptionController.js")
-const insuranceController = require("./controller/insuranceController.js")
-const move = require("./controller/move.js")
-const moveReception = require("./controller/moveReception.js")
 
 const lobbyJson = require("./models/lobby.json")
 const receptionJson = require("./models/reception.json")
@@ -28,9 +25,11 @@ const diseases = require("./models/diseases/dataPatient.json")
 const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
+const partialsPath = path.join(__dirname, './partials')
 
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirectoryPath))
 
@@ -63,9 +62,6 @@ app.get('/reception',(req,res)=>{
 
 app.use("/",lobbyController)
 app.use("/",receptionController)
-app.use("/",insuranceController)
-app.use("/",move)
-app.use("/",moveReception)
 
 
 io.on('connection',(socket)=>{

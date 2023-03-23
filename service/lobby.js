@@ -2,10 +2,10 @@ const fs = require("fs");
 
 const diseases = require("../models/diseases/dataPatient.json");
 
-const {priorityQueueRegister} = require("../fileHander/priorityQueue.js")
+const {priorityQueueRegister,priorityQueueMove} = require("../fileHander/priorityQueue.js")
     
 
-const newPatient = (req, res) => {
+const registerPatient = (req, res) => {
     const name = req.body.name;
     const age = req.body.age;
     const sick = req.body.sick;
@@ -29,4 +29,26 @@ const newPatient = (req, res) => {
   
 };
 
-  module.exports = newPatient
+const movePatient = (req,res)=>{
+
+  const lobby = JSON.parse(fs.readFileSync("./models/lobby.json"))
+
+    const reception = JSON.parse(fs.readFileSync("./models/reception.json"));
+
+    const firstTen = lobby.splice(0,10-reception.length)    
+
+    reception.push(...firstTen)
+
+    fs.writeFileSync("./models/lobby.json",JSON.stringify(lobby))
+
+    fs.writeFileSync("./models/reception.json",JSON.stringify(reception))
+
+    fs.writeFileSync("./models/reception.json",JSON.stringify(priorityQueueMove(reception)))
+
+    res.redirect("/lobby")
+}
+
+  module.exports = {
+    registerPatient,
+    movePatient
+  }

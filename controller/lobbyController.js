@@ -5,8 +5,10 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const newPatient = require("../service/lobby.js")
+const {registerPatient,movePatient} = require("../service/lobby.js")
 
-router.post("/newPatient", newPatient);
+router.post("/lobby/register", registerPatient);
+
+router.post("/lobby/movePatient",movePatient)
 
 module.exports = router;
