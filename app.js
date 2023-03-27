@@ -9,13 +9,12 @@ const hbs = require('hbs')
 
 
 
-const lobbyController = require("./controller/lobbyController.js")
-const receptionController = require("./controller/receptionController.js")
+const lobbyRouter = require("./router/lobbyRouter.js")
+const receptionRouter = require("./router/receptionRouter.js")
 
 const lobbyJson = require("./models/lobby.json")
 const receptionJson = require("./models/reception.json")
 const doctorJson = require("./models/doctor/doctor.json")
-
 const diseases = require("./models/diseases/dataPatient.json")
 
 
@@ -23,7 +22,7 @@ const diseases = require("./models/diseases/dataPatient.json")
 
 
 const port = process.env.PORT || 3000;
-const publicDirectoryPath = path.join(__dirname, './public')
+// const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 const partialsPath = path.join(__dirname, './partials')
 
@@ -31,11 +30,11 @@ app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
-app.use(express.static(publicDirectoryPath))
+// app.use(express.static(publicDirectoryPath))
 
 
 app.get('', (req, res) => {
-  res.render('index', {
+  res.render('lobby', {
   })
 })
 
@@ -60,8 +59,8 @@ app.get('/reception',(req,res)=>{
 })
 
 
-app.use("/",lobbyController)
-app.use("/",receptionController)
+app.use("/",lobbyRouter)
+app.use("/",receptionRouter)
 
 
 io.on('connection',(socket)=>{
