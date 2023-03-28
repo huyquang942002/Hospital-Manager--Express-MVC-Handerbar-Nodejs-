@@ -11,6 +11,7 @@ const hbs = require('hbs')
 
 const lobbyRouter = require("./router/lobbyRouter.js")
 const receptionRouter = require("./router/receptionRouter.js")
+const doctorRouter = require("./router/doctorRouter.js")
 
 const lobbyJson = require("./models/lobby.json")
 const receptionJson = require("./models/reception.json")
@@ -38,10 +39,6 @@ app.get('', (req, res) => {
   })
 })
 
-app.get('/doctor',(req,res)=>{
-  res.render('doctor',{
-  })
-})
 
 app.get('/lobby',(req,res)=>{
   res.render('lobby',{
@@ -61,6 +58,7 @@ app.get('/reception',(req,res)=>{
 
 app.use("/",lobbyRouter)
 app.use("/",receptionRouter)
+app.use("/",doctorRouter)
 
 
 io.on('connection',(socket)=>{

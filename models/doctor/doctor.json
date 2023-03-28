@@ -1,51 +1,10 @@
- [
-    {
-      "name": "Trung",
-      "slot": 2,
-      "currentSlot":0,
-      "specialist": "Chấn thương"
-    },
-    {
-      "name": "Tâm",
-      "slot": 2,
-      "currentSlot":0,
-      "specialist": "Chấn thương"
-    },
-    {
-      "name": "Lý",
-      "slot": 3,
-      "currentSlot":0,
-      "specialist": "Tai mũi họng"
-    },
-    {
-      "name": "Hải",
-      "slot": 4,
-      "currentSlot":0,
-      "specialist": "Tai mũi họng"
-    },
-    {
-      "name": "Trường",
-      "slot": 3,
-      "currentSlot":0,
-      "specialist": "Mắt"
-    },
-    {
-      "name": "Minh",
-      "slot": 2,
-      "currentSlot":0,
-      "specialist": "Mắt"
-    },
-    {
-      "name": "Nhân",
-      "slot": 4,
-      "currentSlot":0,
-      "specialist": "Tim mạch"
-    },
-    {
-      "name": "Long",
-      "slot": 2,
-      "currentSlot":0,
-      "specialist": "Tim mạch"
-    }
-  ]
-
+[
+  { "name": "Trung", "slot": 2, "currentSlot": 2, "specialist": "Chấn thương" },
+  { "name": "Tâm", "slot": 2, "currentSlot": 1, "specialist": "Chấn thương" },
+  { "name": "Lý", "slot": 3, "currentSlot": 0, "specialist": "Tai mũi họng" },
+  { "name": "Hải", "slot": 4, "currentSlot": 0, "specialist": "Tai mũi họng" },
+  { "name": "Trường", "slot": 3, "currentSlot": 0, "specialist": "Mắt" },
+  { "name": "Minh", "slot": 2, "currentSlot": 0, "specialist": "Mắt" },
+  { "name": "Nhân", "slot": 4, "currentSlot": 0, "specialist": "Tim mạch" },
+  { "name": "Long", "slot": 2, "currentSlot": 0, "specialist": "Tim mạch" }
+]

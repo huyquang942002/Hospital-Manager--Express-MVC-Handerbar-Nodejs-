@@ -26,10 +26,11 @@
             <ul class="list-group">
               <li class="list-group-item active">Bác sĩ {{this.name}}</li>
               <li class="list-group-item">Khoa {{this.specialist}}</li>
-              <li class="list-group-item">Current Patients:
-                {{this.currentSlot}}/{{this.slot}}</li>
+              <li class="list-group-item">Current Patients: {{this.currentSlot}}/{{this.slot}}</li>
             </ul>
+                <a href="/doctorRoom/{{this.name}}" class="btn btn-primary">zo</a>
           </div>
+
 
         {{/each}}
       </div>
@@ -40,9 +41,9 @@
     <h1 style="text-align: center;">List Patient</h1>
 
     <div class="container mt-5">
-          <form action="/reception/move" method="POST">
-      <button type="submit" class="btn btn-primary" id="move-btn">Move</button>
-  </form>
+      <form action="/reception/move" method="POST">
+          <button type="submit" class="btn btn-primary" id="move-btn">Move</button>
+      </form>
       <table class="table">
         <thead>
           <tr>

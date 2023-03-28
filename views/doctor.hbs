@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Hospital Manager</title>
-    <!-- Thêm các liên kết đến tệp CSS và JavaScript của Bootstrap -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -15,27 +14,37 @@
 
 	
     <div class="container mt-5">
-      <h2>Danh sách bệnh nhân đã đăng ký</h2>
+      <h2>List Patient of Doctor {{nameDoctor}}</h2>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Tuổi</th>
-            <th scope="col">Giới tính</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Disease</th>
+            <th scope="col">Priority</th>
+            <th scope="col">specialist</th>
+            <th scope="col">Date</th>
           </tr>
         </thead>
         <tbody id="registered-patients">
-          <!-- Danh sách bệnh nhân sẽ được thêm vào đây bằng JavaScript -->
+          {{#each dataJson}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{this.age}}</td>
+              <td>{{this.sick}}</td>
+              <td>{{this.priority}}</td>
+              <td>{{this.specialist}}</td>
+              <td>{{this.date}}</td>
+            </tr>
+          {{/each}}
         </tbody>
       </table>
-      <!-- Định nghĩa mẫu Handlebars cho một bệnh nhân -->
-      <script id="patient-template" type="text/x-handlebars-template">
-        <tr>
-          <td>{{name}}</td>
-          <td>{{age}}</td>
-          <td>{{gender}}</td>
-        </tr>
-      </script>
+      
+  <form action="#" method="POST">
+      <button type="submit" class="btn btn-primary" id="move-btn">Completed</button>
+  </form>
+
     </div>
+  
   </body>
 </html>
