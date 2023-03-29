@@ -54,7 +54,10 @@ app.use("/",doctorRouter)
 
 io.on('connection',(socket)=>{
     socket.emit('register-socket',lobbyJson)
+    // socket.emit('reception-socket',receptionJson)
 })
+
+
 
 server.listen(port, () => {
   console.log('Server is up on port ' + port);
