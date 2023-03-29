@@ -24,6 +24,7 @@
             <th scope="col">Priority</th>
             <th scope="col">specialist</th>
             <th scope="col">Date</th>
+            <th scope="col">Insurance</th>
           </tr>
         </thead>
         <tbody id="registered-patients">
@@ -35,13 +36,14 @@
               <td>{{this.priority}}</td>
               <td>{{this.specialist}}</td>
               <td>{{this.date}}</td>
+              <td>{{this.insurance}}</td>
             </tr>
           {{/each}}
         </tbody>
       </table>
       
-  <form action="#" method="POST">
-      <button type="submit" class="btn btn-primary" id="move-btn">Completed</button>
+  <form action="/doctorRoom/delete/{{nameDoctor}}" method="GET">
+      <button type="submit" class="btn btn-primary" id="move-btn">Done</button>
   </form>
 
     </div>

@@ -112,4 +112,5 @@ module.exports = {
     deletePatient,
     insurance,
     moveReception,
+    updateSlot
 }
