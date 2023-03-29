@@ -10,6 +10,6 @@ const {redirectRoomDoctor,deletePatient} = require("../controller/doctor.Control
 
 router.get("/doctorRoom/:name",redirectRoomDoctor)
 
-router.get("/doctorRoom/delete/:name",deletePatient)
+router.get("/doctorRoom/delete/:index",deletePatient)
 
 module.exports = router;

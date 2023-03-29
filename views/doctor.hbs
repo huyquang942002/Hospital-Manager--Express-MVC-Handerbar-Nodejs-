@@ -18,6 +18,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">STT</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
             <th scope="col">Disease</th>
@@ -30,6 +31,7 @@
         <tbody id="registered-patients">
           {{#each dataJson}}
             <tr>
+              <td>{{@index}}</td>
               <td>{{this.name}}</td>
               <td>{{this.age}}</td>
               <td>{{this.sick}}</td>
@@ -37,14 +39,19 @@
               <td>{{this.specialist}}</td>
               <td>{{this.date}}</td>
               <td>{{this.insurance}}</td>
+              <td>
+                <a
+                  href="/doctorRoom/delete/{{@index}}"
+                  class="btn btn-primary edit-btn"
+                >Done</a>
+              </td>
             </tr>
           {{/each}}
         </tbody>
       </table>
+
+            
       
-  <form action="/doctorRoom/delete/{{nameDoctor}}" method="GET">
-      <button type="submit" class="btn btn-primary" id="move-btn">Done</button>
-  </form>
 
     </div>
   

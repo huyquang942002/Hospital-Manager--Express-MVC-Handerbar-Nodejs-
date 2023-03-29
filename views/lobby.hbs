@@ -77,13 +77,11 @@
 
     const patients = document.getElementById("registered-patients")
 
-    var form = document.getElementById("register-form")
-
        const renderpatient = function(data){
 
         patients.innerText = '' ;
 
-        data.map(function(item,i){
+        data.map(function(item){
 
           let tableRow = document.createElement('tr');
 

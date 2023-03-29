@@ -23,21 +23,12 @@ const diseases = require("./models/diseases/dataPatient.json")
 
 
 const port = process.env.PORT || 3000;
-// const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 const partialsPath = path.join(__dirname, './partials')
 
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
-
-// app.use(express.static(publicDirectoryPath))
-
-
-app.get('', (req, res) => {
-  res.render('lobby', {
-  })
-})
 
 
 app.get('/lobby',(req,res)=>{
