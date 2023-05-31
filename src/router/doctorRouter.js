@@ -5,10 +5,13 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const {registerPatient,movePatient} = require("../controller/lobby.Controller.js")
+const {
+  redirectRoomDoctor,
+  deletePatient,
+} = require("../controller/doctor.Controller");
 
-router.post("/lobby/register", registerPatient);
+router.get("/doctorRoom/:name", redirectRoomDoctor);
 
-router.post("/lobby/movePatient",movePatient)
+router.get("/doctorRoom/delete/:index", deletePatient);
 
 module.exports = router;

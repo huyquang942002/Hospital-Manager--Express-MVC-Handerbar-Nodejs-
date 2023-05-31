@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
-const fs = require("fs")
+const fs = require("fs");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const {updateSlot} = require("./reception.Controller.js")
+const { updateSlot } = require("../controller/reception.Controller");
 
 let nameDoctor;
 
@@ -23,16 +23,19 @@ const redirectRoomDoctor = (req, res) => {
   });
 };
 
-const deletePatient = (req,res)=>{
+const deletePatient = (req, res) => {
   const index = req.params.index;
   const dataJson = arrNameDoctor(nameDoctor);
-  dataJson.splice(index,1);
-  updateSlot(nameDoctor,dataJson.length)
-  fs.writeFileSync(`./models/doctor/${nameDoctor}.json`,JSON.stringify(dataJson))
-  res.redirect(`/doctorRoom/${nameDoctor}`)
-}
+  dataJson.splice(index, 1);
+  updateSlot(nameDoctor, dataJson.length);
+  fs.writeFileSync(
+    `./src/models/doctor/${nameDoctor}.json`,
+    JSON.stringify(dataJson)
+  );
+  res.redirect(`/doctorRoom/${nameDoctor}`);
+};
 
 module.exports = {
   redirectRoomDoctor,
-  deletePatient
+  deletePatient,
 };
